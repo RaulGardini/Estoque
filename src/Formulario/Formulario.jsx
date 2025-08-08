@@ -3,23 +3,40 @@ import { useNavigate } from 'react-router-dom';
 import './Formulario.css';
 
 function Formulario() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [senha, setSenha] = useState('');
-  const [erro, setErro] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!senha) {
-      setErro('Por favor, digite a senha');
-      return;
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:3001/login/validar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ senha }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Senha válida, navegar para Home
+        navigate('/Home');
+      } else {
+        // Senha inválida
+        setError(data.message || 'Senha incorreta');
+      }
+    } catch (err) {
+      setError('Erro de conexão com o servidor');
+      console.error('Erro ao validar senha:', err);
+    } finally {
+      setLoading(false);
     }
-    if (senha.length < 6) {
-      setErro('A senha deve ter pelo menos 6 caracteres');
-      return;
-    }
-    setErro('');
-    // Aqui você pode adicionar a lógica de autenticação
-    alert('Login realizado!');
   };
 
   return (
@@ -31,14 +48,19 @@ function Formulario() {
             type="password"
             id="senha"
             value={senha}
-            onChange={e => setSenha(e.target.value)}
+            onChange={(e) => setSenha(e.target.value)}
             placeholder="Digite a senha"
             autoComplete="current-password"
             required
+            disabled={loading}
           />
         </div>
-        {erro && <span className="erro-msg">{erro}</span>}
-        <button  onClick={() => navigate('/Home')} type="submit">Entrar</button>
+        
+        {error && <div className="error-message">{error}</div>}
+        
+        <button type="submit" disabled={loading || !senha.trim()}>
+          {loading ? 'Validando...' : 'Entrar'}
+        </button>
       </form>
     </div>
   );
