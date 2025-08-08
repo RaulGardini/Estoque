@@ -68,32 +68,34 @@ function ColantBasicoInfantil() {
 
     const deletar = (tamanho) => {
         if (loading || estoque[tamanho] === 0) return;
-        const novaQuantidade = estoque[tamanho] - 1;
-        atualizarEstoqueBackend(tamanho, novaQuantidade, 'remover');
+        if (window.confirm(`Tem certeza que deseja remover 1 unidade do tamanho ${tamanho}?`)) {
+            const novaQuantidade = estoque[tamanho] - 1;
+            atualizarEstoqueBackend(tamanho, novaQuantidade, 'remover');
+        }
     };
 
     return (
         <div className="estoque-container">
-      <h2>Colant básico Infantil</h2>
-      <div className="estoque-total">
-        <strong>Total em estoque:</strong> {total}
-      </div>
-      <div className="estoque-tamanhos">
-        {['P', 'M', 'G', 'GG'].map(tamanho => (
-          <div key={tamanho} className="estoque-tamanho-item">
-            <span className="tamanho-label">{tamanho}</span>
-            <span className="tamanho-quantidade">{estoque[tamanho]}</span>
-            <button className="btn-add" onClick={() => adicionar(tamanho)} disabled={loading}>
-              +
-            </button>
-            <button className="btn-del" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
-              -
-            </button>
-          </div>
-        ))}
-      </div>
-      <button className="btn-voltar" onClick={() => navigate('/Home')}>Voltar</button>
-    </div>
+            <h2>Colant básico Infantil</h2>
+            <div className="estoque-total">
+                <strong>Total em estoque:</strong> {total}
+            </div>
+            <div className="estoque-tamanhos">
+                {['P', 'M', 'G', 'GG'].map(tamanho => (
+                    <div key={tamanho} className="estoque-tamanho-item">
+                        <span className="tamanho-label">{tamanho}</span>
+                        <span className="tamanho-quantidade">{estoque[tamanho]}</span>
+                        <button className="btn-add" onClick={() => adicionar(tamanho)} disabled={loading}>
+                            +
+                        </button>
+                        <button className="btn-del" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
+                            -
+                        </button>
+                    </div>
+                ))}
+            </div>
+            <button className="btn-voltar" onClick={() => navigate('/Home')}>Voltar</button>
+        </div>
     );
 }
 

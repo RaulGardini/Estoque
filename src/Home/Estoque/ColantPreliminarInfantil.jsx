@@ -4,73 +4,75 @@ import { useNavigate } from 'react-router-dom';
 
 function ColantPreliminarInfantil() {
     const navigate = useNavigate();
-        
-          const [estoque, setEstoque] = useState({
-            P: 0,
-            M: 0,
-            G: 0,
-            GG: 0,
-          });
-        
-          const [loading, setLoading] = useState(false);
-        
-          useEffect(() => {
-            fetch('http://localhost:3001/estoque')
-              .then(res => res.json())
-              .then(data => {
+
+    const [estoque, setEstoque] = useState({
+        P: 0,
+        M: 0,
+        G: 0,
+        GG: 0,
+    });
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/estoque')
+            .then(res => res.json())
+            .then(data => {
                 if (data.success && data.data) {
-                  const estoqueProduto = data.data.collantpreliminarinfantil || { P: 0, M: 0, G: 0, GG: 0 };
-                  setEstoque(estoqueProduto);
+                    const estoqueProduto = data.data.collantpreliminarinfantil || { P: 0, M: 0, G: 0, GG: 0 };
+                    setEstoque(estoqueProduto);
                 }
-              })
-              .catch(err => {
+            })
+            .catch(err => {
                 console.error('Erro ao carregar estoque:', err);
-              });
-          }, []);
-        
-          const total = estoque.P + estoque.M + estoque.G + estoque.GG;
-        
-          const atualizarEstoqueBackend = async (tamanho, novaQuantidade, tipoOperacao) => {
-            setLoading(true);
-            try {
-              const response = await fetch('http://localhost:3001/estoque/atualizar', {
+            });
+    }, []);
+
+    const total = estoque.P + estoque.M + estoque.G + estoque.GG;
+
+    const atualizarEstoqueBackend = async (tamanho, novaQuantidade, tipoOperacao) => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://localhost:3001/estoque/atualizar', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  produto_nome: 'Collant Preliminar Infantil',
-                  tamanho,
-                  nova_quantidade: novaQuantidade,
-                  tipo_operacao: tipoOperacao,
+                    produto_nome: 'Collant Preliminar Infantil',
+                    tamanho,
+                    nova_quantidade: novaQuantidade,
+                    tipo_operacao: tipoOperacao,
                 }),
-              });
-              const data = await response.json();
-              if (data.success) {
+            });
+            const data = await response.json();
+            if (data.success) {
                 setEstoque(prev => ({
-                  ...prev,
-                  [tamanho]: novaQuantidade,
+                    ...prev,
+                    [tamanho]: novaQuantidade,
                 }));
-              } else {
+            } else {
                 alert('Erro ao atualizar estoque: ' + data.message);
-              }
-            } catch (error) {
-              alert('Erro ao comunicar com o servidor.');
-              console.error(error);
-            } finally {
-              setLoading(false);
             }
-          };
-        
-          const adicionar = (tamanho) => {
-            if (loading) return;
-            const novaQuantidade = estoque[tamanho] + 1;
-            atualizarEstoqueBackend(tamanho, novaQuantidade, 'adicionar');
-          };
-        
-          const deletar = (tamanho) => {
-            if (loading || estoque[tamanho] === 0) return;
+        } catch (error) {
+            alert('Erro ao comunicar com o servidor.');
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const adicionar = (tamanho) => {
+        if (loading) return;
+        const novaQuantidade = estoque[tamanho] + 1;
+        atualizarEstoqueBackend(tamanho, novaQuantidade, 'adicionar');
+    };
+
+    const deletar = (tamanho) => {
+        if (loading || estoque[tamanho] === 0) return;
+        if (window.confirm(`Tem certeza que deseja remover 1 unidade do tamanho ${tamanho}?`)) {
             const novaQuantidade = estoque[tamanho] - 1;
             atualizarEstoqueBackend(tamanho, novaQuantidade, 'remover');
-          };
+        }
+    };
 
     return (
         <div className="estoque-container">

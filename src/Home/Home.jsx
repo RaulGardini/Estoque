@@ -66,6 +66,7 @@ function Home() {
 
     return (
         <div className="home-container">
+            <h1>bom dia, Vladia!</h1>
             <div className="lista-colunas">
                 <button onClick={() => navigate('/ColantBasicoInfantil')} className="coluna-btn btn-com-tamanhos">
                     <div className="btn-content">
