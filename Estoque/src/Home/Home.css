@@ -1,0 +1,161 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.lista-colunas {
+  width: 100%;
+  max-width: 800px;
+}
+
+.coluna-btn {
+  text-align: left;
+  width: 100%;
+  min-height: 80px;
+  margin-top: 20px;
+  padding: 1.1rem 0.7rem;
+  font-weight: 600;
+  border-radius: 3px;
+  border: none;
+  background: rgb(183, 183, 183);
+  color: #1d1d1d;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border-bottom: 15px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.btn-content h2 {
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
+
+.btn-content h4 {
+  margin: 0;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+}
+
+.btn-tamanhos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  margin-left: 16px;
+}
+
+.btn-tamanhos span {
+  font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+  color: #1d1d1d;
+  border-radius: 6px;
+  padding: 2px 10px;
+  margin-bottom: 2px;
+}
+
+.coluna-btn:hover {
+  background: #2563eb;
+  transform: scale(1.03);
+}
+
+/* Botões sem tamanhos - para itens como Redinha, Adereço, etc */
+.coluna-btn:not(.btn-com-tamanhos) {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coluna-btn:not(.btn-com-tamanhos) h2 {
+  margin: 0;
+}
+
+.coluna-btn:not(.btn-com-tamanhos) h4 {
+  margin: 0;
+  margin-left: auto;
+}
+
+/* Media queries para diferentes tamanhos */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 0.5rem;
+  }
+  
+  .coluna-btn {
+    padding: 1rem 0.8rem;
+    min-height: 70px;
+  }
+  
+  .btn-tamanhos {
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lista-colunas {
+    max-width: 95vw;
+  }
+  
+  .coluna-btn {
+    padding: 0.9rem 0.5rem;
+    min-height: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .btn-com-tamanhos {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  
+  .btn-tamanhos {
+    margin-left: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  
+  .btn-tamanhos span {
+    padding: 1px 6px;
+    margin-bottom: 0;
+  }
+  
+  /* Para botões sem tamanhos em mobile */
+  .coluna-btn:not(.btn-com-tamanhos) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .coluna-btn {
+    padding: 0.7rem 0.4rem;
+    min-height: 55px;
+  }
+  
+  .btn-content h2 {
+    font-size: 0.9rem;
+  }
+  
+  .btn-tamanhos {
+    margin-left: 6px;
+  }
+  
+  .btn-tamanhos span {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+  }
+}

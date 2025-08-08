@@ -1,0 +1,110 @@
+.login-container {
+  min-height: 90vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(222, 222, 222);
+}
+
+.login-form {
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: rgb(28, 28, 255);
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+
+.login-form h2 {
+  color: rgb(222, 222, 222);
+  margin: 0 0 0.5rem 0; /* Remove margem padrão */
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.input-group input {
+  padding: 0.7rem;
+  border-radius: 4px;
+  height: 2rem;
+  border: 1px solid #dbeafe;
+  font-size: 1rem;
+  outline: none;
+  background: rgb(222, 222, 222);
+  transition: border 0.2s;
+  box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.input-group input:focus {
+  border: 1.5px solid #4f8cff;
+}
+
+.input-group input::placeholder {
+  color: #666;
+}
+
+button[type="submit"] {
+  background: #ffb245;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 4px 16px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgb(26, 26, 26);
+  font-size: 0.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 600;
+}
+
+button[type="submit"]:hover {
+  background: #c38835;
+  transform: translateY(-1px);
+}
+
+.erro-msg {
+  color: #e11d48;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0;
+  padding: 0.5rem;
+  background: rgba(225, 29, 72, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(225, 29, 72, 0.2);
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-form {
+    padding: 1.5rem 1rem;
+    max-width: 95vw;
+    gap: 1rem;
+  }
+  
+  .login-form h2 {
+    font-size: 1.5rem;
+  }
+  
+  .input-group input {
+    padding: 0.8rem;
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+  
+  button[type="submit"] {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+  }
+}
