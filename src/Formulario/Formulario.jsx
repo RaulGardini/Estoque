@@ -8,8 +8,7 @@ function Formulario() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validarSenha = async () => {
     setLoading(true);
     setError('');
 
@@ -25,24 +24,56 @@ function Formulario() {
       const data = await response.json();
 
       if (data.success) {
-        // Senha válida, navegar para Home
-        navigate('/Home');
+        return data.data; // retorna { permissao: 'Usuario' ou 'Admin', senha_id: ... }
       } else {
-        // Senha inválida
         setError(data.message || 'Senha incorreta');
+        return null;
       }
     } catch (err) {
       setError('Erro de conexão com o servidor');
       console.error('Erro ao validar senha:', err);
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
+  const handleEntrarUsuario = async (e) => {
+    e.preventDefault();
+    
+    const dadosUsuario = await validarSenha();
+    
+    if (dadosUsuario && dadosUsuario.permissao === 'Usuario') {
+      // Senha de usuário válida, navegar para Home
+      navigate('/Home');
+    } else if (dadosUsuario && dadosUsuario.permissao === 'Admin') {
+      // Senha de admin usada no botão de usuário - permitir acesso ao Home também
+      navigate('/Home');
+    } else if (dadosUsuario) {
+      setError('Permissão não reconhecida');
+    }
+    // Se dadosUsuario for null, a mensagem de erro já foi definida em validarSenha
+  };
+
+  const handleEntrarGerenciamento = async (e) => {
+    e.preventDefault();
+    
+    const dadosUsuario = await validarSenha();
+    
+    if (dadosUsuario && dadosUsuario.permissao === 'Admin') {
+      // Senha de admin válida, navegar para Gerenciamento
+      navigate('/Gerenciamento');
+    } else if (dadosUsuario && dadosUsuario.permissao === 'Usuario') {
+      // Senha de usuário não tem permissão para gerenciamento
+      setError('Acesso negado. Você não tem permissão para acessar o gerenciamento.');
+    }
+    // Se dadosUsuario for null, a mensagem de erro já foi definida em validarSenha
+  };
+
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Senha</h2>
+      <form className="login-form">
+        <h2>Acesso ao Sistema</h2>
         <div className="input-group">
           <input
             type="password"
@@ -55,12 +86,26 @@ function Formulario() {
             disabled={loading}
           />
         </div>
-        
+                
         {error && <div className="error-message">{error}</div>}
         
-        <button type="submit" disabled={loading || !senha.trim()}>
-          {loading ? 'Validando...' : 'Entrar'}
-        </button>
+        <div className="buttons-container">
+          <button 
+            type="button"
+            onClick={handleEntrarUsuario}
+            className="btn-usuario"
+          >
+            {loading ? 'Validando...' : 'Entrar como Usuário'}
+          </button>
+          
+          <button 
+            type="button"
+            onClick={handleEntrarGerenciamento}
+            className="btn-admin"
+          >
+            {loading ? 'Validando...' : 'Acessar Gerenciamento'}
+          </button>
+        </div>
       </form>
     </div>
   );
