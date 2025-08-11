@@ -69,7 +69,7 @@ function Gerenciamento() {
             <div className='gerenciamento'>
                 <h1>Vamos ao trabalho!</h1>
                 <p>Gerenciamento de vendas Mensais da Vladia</p>
-                <button style={{marginTop: '1rem'}} className='btn-gerenciamento'>
+                <button onClick={() => navigate('/Movimentacoes')} style={{marginTop: '1rem'}} className='btn-gerenciamento'>
                     Gerenciar
                 </button>
             </div>

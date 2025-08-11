@@ -24,6 +24,7 @@ import GRedinha from './Admin/Estoque/GRedinha'
 import GMeiaInfantil from './Admin/Estoque/GMeiaInfantil'
 import GSapatilhaPreta from './Admin/Estoque/GSapatilhaPreta'
 import GSapatilhaRosa from './Admin/Estoque/GSapatilhaRosa'
+import Movimentacoes from './Admin/Movimentacoes/Movimentacoes'
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/GMeiaInfantil" element={<GMeiaInfantil />} />
         <Route path="/GSapatilhaPreta" element={<GSapatilhaPreta />} />
         <Route path="/GSapatilhaRosa" element={<GSapatilhaRosa />} />
+        <Route path="/Movimentacoes" element={<Movimentacoes />} />
       </Routes>
     </BrowserRouter>
   )

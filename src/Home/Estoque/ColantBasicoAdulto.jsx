@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Estoque.css';
+import { TiShoppingCart } from "react-icons/ti";
 import { useNavigate } from 'react-router-dom';
 
 function ColantBasicoAdulto() {
@@ -60,12 +61,6 @@ function ColantBasicoAdulto() {
         }
     };
 
-    const adicionar = (tamanho) => {
-        if (loading) return;
-        const novaQuantidade = estoque[tamanho] + 1;
-        atualizarEstoqueBackend(tamanho, novaQuantidade, 'adicionar');
-    };
-
     const deletar = (tamanho) => {
         if (loading || estoque[tamanho] === 0) return;
         if (window.confirm(`Tem certeza que deseja remover 1 unidade do tamanho ${tamanho}?`)) {
@@ -85,11 +80,8 @@ function ColantBasicoAdulto() {
                     <div key={tamanho} className="estoque-tamanho-item">
                         <span className="tamanho-label">{tamanho}</span>
                         <span className="tamanho-quantidade">{estoque[tamanho]}</span>
-                        <button className="btn-add" onClick={() => adicionar(tamanho)} disabled={loading}>
-                            +
-                        </button>
                         <button className="btn-del" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
-                            -
+                            <TiShoppingCart />
                         </button>
                     </div>
                 ))}

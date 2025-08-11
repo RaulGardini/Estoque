@@ -88,7 +88,7 @@ function GColantBasicoAdulto() {
                         <button className="btn-add" onClick={() => adicionar(tamanho)} disabled={loading}>
                             +
                         </button>
-                        <button className="btn-del" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
+                        <button className="btn-del-gerenciamento" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
                             -
                         </button>
                     </div>

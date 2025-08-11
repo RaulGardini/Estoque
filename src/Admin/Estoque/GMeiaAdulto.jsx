@@ -75,7 +75,7 @@ const deletar = () => {
                 <button className="btn-add" onClick={adicionar} disabled={loading}>
                     +
                 </button>
-                <button className="btn-del" onClick={deletar} disabled={loading || quantidade === 0}>
+                <button className="btn-del-gerenciamento" onClick={deletar} disabled={loading || quantidade === 0}>
                     -
                 </button>
             </div>
