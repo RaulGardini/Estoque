@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Estoque.css';
+import { TiShoppingCart } from "react-icons/ti";
 import { useNavigate } from 'react-router-dom';
 
 function MeiaInfantil() {
@@ -51,12 +52,6 @@ function MeiaInfantil() {
         }
     };
 
-    const adicionar = () => {
-        if (loading) return;
-        const novaQuantidade = quantidade + 1;
-        atualizarEstoqueBackend(novaQuantidade, 'adicionar');
-    };
-
     const deletar = () => {
         if (loading || quantidade === 0) return;
         if (window.confirm(`Tem certeza que deseja remover 1 unidade?`)) {
@@ -72,11 +67,8 @@ function MeiaInfantil() {
                 <strong>Total em estoque:</strong> {quantidade}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-                <button className="btn-add" onClick={adicionar} disabled={loading}>
-                    +
-                </button>
                 <button className="btn-del" onClick={deletar} disabled={loading || quantidade === 0}>
-                    -
+                    <TiShoppingCart />
                 </button>
             </div>
             <button className="btn-voltar" onClick={() => navigate('/Home')}>Voltar</button>

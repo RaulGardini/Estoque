@@ -1,4 +1,4 @@
-.estoque-container {
+.estoque-containerr {
   max-width: 400px;
   margin: 2rem auto;
   background: #fff;
@@ -10,9 +10,9 @@
   gap: 1.5rem;
 }
 
-.estoque-container h2 {
+.estoque-containerr h2 {
   text-align: center;
-  color: #2563eb;
+  color: #b835dc;
   margin-bottom: 0.5rem;
 }
 
@@ -67,12 +67,12 @@
   background: #16a34a;
 }
 
-.btn-del {
-  background: #b835dc;
+.btn-del-gerenciamento {
+  background: #dc3535;
   color: #fff;
   border: none;
   border-radius: 0.7rem;
-  padding: 0.5rem 5.2rem;
+  padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
@@ -84,8 +84,8 @@
   cursor: not-allowed;
 }
 
-.btn-voltar{
-    background-color: blue;
+.btn-voltar-gerenciamento{
+    background-color: #b835dc;
     border: none;
     padding: 10px;
     color: white;

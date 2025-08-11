@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Estoque.css';
-import { TiShoppingCart } from "react-icons/ti";
+import './GEstoque.css';
 import { useNavigate } from 'react-router-dom';
 
-function ColantPreliminarInfantil() {
+function GColantBasicoInfantil() {
     const navigate = useNavigate();
 
     const [estoque, setEstoque] = useState({
@@ -20,7 +19,7 @@ function ColantPreliminarInfantil() {
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.data) {
-                    const estoqueProduto = data.data.collantpreliminarinfantil || { P: 0, M: 0, G: 0, GG: 0 };
+                    const estoqueProduto = data.data.collantbasicoinfantil || { P: 0, M: 0, G: 0, GG: 0 };
                     setEstoque(estoqueProduto);
                 }
             })
@@ -34,11 +33,11 @@ function ColantPreliminarInfantil() {
     const atualizarEstoqueBackend = async (tamanho, novaQuantidade, tipoOperacao) => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:3001/estoque/atualizar', {
+            const response = await fetch('http://localhost:3001/estoque/atualizar-simples', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    produto_nome: 'Collant Preliminar Infantil',
+                    produto_nome: 'Collant Básico Infantil',
                     tamanho,
                     nova_quantidade: novaQuantidade,
                     tipo_operacao: tipoOperacao,
@@ -61,6 +60,12 @@ function ColantPreliminarInfantil() {
         }
     };
 
+    const adicionar = (tamanho) => {
+        if (loading) return;
+        const novaQuantidade = estoque[tamanho] + 1;
+        atualizarEstoqueBackend(tamanho, novaQuantidade, 'adicionar');
+    };
+
     const deletar = (tamanho) => {
         if (loading || estoque[tamanho] === 0) return;
         if (window.confirm(`Tem certeza que deseja remover 1 unidade do tamanho ${tamanho}?`)) {
@@ -70,8 +75,8 @@ function ColantPreliminarInfantil() {
     };
 
     return (
-        <div className="estoque-container">
-            <h2>Colant preliminar Infantil</h2>
+        <div className="estoque-containerr">
+            <h2>Colant básico Infantil</h2>
             <div className="estoque-total">
                 <strong>Total em estoque:</strong> {total}
             </div>
@@ -80,15 +85,18 @@ function ColantPreliminarInfantil() {
                     <div key={tamanho} className="estoque-tamanho-item">
                         <span className="tamanho-label">{tamanho}</span>
                         <span className="tamanho-quantidade">{estoque[tamanho]}</span>
-                        <button className="btn-del" onClick={() => deletar(tamanho)} disabled={estoque[tamanho] === 0}>
-                            <TiShoppingCart />
+                        <button className="btn-add" onClick={() => adicionar(tamanho)} disabled={loading}>
+                            +
+                        </button>
+                        <button className="btn-del-gerenciamento" onClick={() => deletar(tamanho)} disabled={loading || estoque[tamanho] === 0}>
+                            -
                         </button>
                     </div>
                 ))}
             </div>
-            <button className="btn-voltar" onClick={() => navigate('/Home')}>Voltar</button>
+            <button className="btn-voltar-gerenciamento" onClick={() => navigate('/Gerenciamento')}>Voltar</button>
         </div>
     );
 }
 
-export default ColantPreliminarInfantil;
+export default GColantBasicoInfantil;
