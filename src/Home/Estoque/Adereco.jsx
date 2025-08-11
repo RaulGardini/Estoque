@@ -8,13 +8,11 @@ function Adereco() {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Buscar estoque do backend ao montar componente
     useEffect(() => {
         fetch('http://localhost:3001/estoque')
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.data) {
-                    // A chave é o nome do produto formatado (sem espaço, minúsculo e sem acento)
                     const qtd = data.data.adereco || 0;
                     setQuantidade(qtd);
                 }
