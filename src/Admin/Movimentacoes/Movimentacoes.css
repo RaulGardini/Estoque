@@ -226,3 +226,8 @@
     .table-row .quantidade-vendida::before { content: "Qtd Vendida: "; }
     .table-row .valor-total::before { content: "Valor Total: "; }
 }
+
+.btns-gerenciamento{
+    display: flex;
+    background-color: red;
+}
