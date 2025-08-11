@@ -118,13 +118,14 @@
 }
 
 .btn-excluir{
-    background: none;
+    background-color: red;
     border: none;
-    color: #dc3545;
+    color: #ffffff;
     cursor: pointer;
     font-size: 0.85rem;
-    padding: 0;
+    padding: 4px;
     margin-left: 20px;
+    border-radius: 5px;
 }
 
 .vendas-valor-section {

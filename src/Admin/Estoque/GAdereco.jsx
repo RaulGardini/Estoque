@@ -59,10 +59,8 @@ const adicionar = () => {
 
 const deletar = () => {
     if (loading || quantidade === 0) return;
-    if (window.confirm(`Tem certeza que deseja remover 1 unidade?`)) {
         const novaQuantidade = quantidade - 1;
         atualizarEstoqueBackend(novaQuantidade);
-    }
 };
 
     return (

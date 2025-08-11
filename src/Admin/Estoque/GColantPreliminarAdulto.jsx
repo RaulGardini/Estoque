@@ -68,10 +68,8 @@ function GColantPreliminarAdulto() {
 
     const deletar = (tamanho) => {
         if (loading || estoque[tamanho] === 0) return;
-        if (window.confirm(`Tem certeza que deseja remover 1 unidade do tamanho ${tamanho}?`)) {
             const novaQuantidade = estoque[tamanho] - 1;
             atualizarEstoqueBackend(tamanho, novaQuantidade, 'remover');
-        }
     };
 
     return (
