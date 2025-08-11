@@ -24,7 +24,7 @@ function Formulario() {
       const data = await response.json();
 
       if (data.success) {
-        return data.data; // retorna { permissao: 'Usuario' ou 'Admin', senha_id: ... }
+        return data.data;
       } else {
         setError(data.message || 'Senha incorreta');
         return null;
@@ -44,15 +44,12 @@ function Formulario() {
     const dadosUsuario = await validarSenha();
     
     if (dadosUsuario && dadosUsuario.permissao === 'Usuario') {
-      // Senha de usuário válida, navegar para Home
       navigate('/Home');
     } else if (dadosUsuario && dadosUsuario.permissao === 'Admin') {
-      // Senha de admin usada no botão de usuário - permitir acesso ao Home também
       navigate('/Home');
     } else if (dadosUsuario) {
       setError('Permissão não reconhecida');
     }
-    // Se dadosUsuario for null, a mensagem de erro já foi definida em validarSenha
   };
 
   const handleEntrarGerenciamento = async (e) => {
@@ -61,13 +58,10 @@ function Formulario() {
     const dadosUsuario = await validarSenha();
     
     if (dadosUsuario && dadosUsuario.permissao === 'Admin') {
-      // Senha de admin válida, navegar para Gerenciamento
       navigate('/Gerenciamento');
     } else if (dadosUsuario && dadosUsuario.permissao === 'Usuario') {
-      // Senha de usuário não tem permissão para gerenciamento
       setError('Acesso negado. Você não tem permissão para acessar o gerenciamento.');
     }
-    // Se dadosUsuario for null, a mensagem de erro já foi definida em validarSenha
   };
 
   return (
