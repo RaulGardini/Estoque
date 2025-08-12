@@ -7,6 +7,7 @@ import ColantBasicoInfantil from './Home/Estoque/ColantBasicoInfantil'
 import ColantBasicoAdulto from './Home/Estoque/ColantBasicoAdulto'
 import ColantPreliminarInfantil from './Home/Estoque/ColantPreliminarInfantil'
 import ColantPreliminarAdulto from './Home/Estoque/ColantPreliminarAdulto'
+import ColantRosa from './Home/Estoque/ColantRosa'
 import Redinha from './Home/Estoque/Redinha'
 import Adereco from './Home/Estoque/Adereco'
 import SapatilhaRosa from './Home/Estoque/SapatilhaRosa'
@@ -19,6 +20,7 @@ import GColantBasicoAdulto from './Admin/Estoque/GColantBasicoAdulto'
 import GColantBasicoInfantil from './Admin/Estoque/GColantBasicoInfantil'
 import GColantPreliminarAdulto from './Admin/Estoque/GColantPreliminarAdulto'
 import GColantPreliminarInfantil from './Admin/Estoque/GColantPreliminarInfantil'
+import GColantRosa from './Admin/Estoque/GColantRosa'
 import GMeiaAdulto from './Admin/Estoque/GMeiaAdulto'
 import GRedinha from './Admin/Estoque/GRedinha'
 import GMeiaInfantil from './Admin/Estoque/GMeiaInfantil'
@@ -37,6 +39,7 @@ function App() {
         <Route path="/ColantBasicoAdulto" element={<ColantBasicoAdulto />} />
         <Route path="/ColantPreliminarInfantil" element={<ColantPreliminarInfantil />} />
         <Route path="/ColantPreliminarAdulto" element={<ColantPreliminarAdulto />} />
+        <Route path="/ColantRosa" element={<ColantRosa />} />
         <Route path="/Redinha" element={<Redinha />} />
         <Route path="/Adereco" element={<Adereco />} />
         <Route path="/SapatilhaRosa" element={<SapatilhaRosa />} />
@@ -49,6 +52,7 @@ function App() {
         <Route path="/GColantBasicoInfantil" element={<GColantBasicoInfantil />} />
         <Route path="/GColantPreliminarAdulto" element={<GColantPreliminarAdulto />} />
         <Route path="/GColantPreliminarInfantil" element={<GColantPreliminarInfantil />} />
+        <Route path="/GColantRosa" element={<GColantRosa />} />
         <Route path="/GMeiaAdulto" element={<GMeiaAdulto />} />
         <Route path="/GRedinha" element={<GRedinha />} />
         <Route path="/GMeiaInfantil" element={<GMeiaInfantil />} />

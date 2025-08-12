@@ -74,6 +74,18 @@ function Gerenciamento() {
                 </button>
             </div>
             <div className="lista-colunas">
+                <button onClick={() => navigate('/GColantRosa')} className="coluna-btn-gerenciamento btn-com-tamanhos">
+                    <div className="btn-content">
+                        <h2>Colant Rosa</h2>
+                    </div>
+                    <div className="btn-tamanhos">
+                        <span>P-{getQuantidadeTamanho('Collant Rosa', 'P')}</span>
+                        <span>M-{getQuantidadeTamanho('Collant Rosa', 'M')}</span>
+                        <span>G-{getQuantidadeTamanho('Collant Rosa', 'G')}</span>
+                        <span>GG-{getQuantidadeTamanho('Collant Rosa', 'GG')}</span>
+                    </div>
+                </button>
+
                 <button onClick={() => navigate('/GColantBasicoInfantil')} className="coluna-btn-gerenciamento btn-com-tamanhos">
                     <div className="btn-content">
                         <h2>Colant básico infantil</h2>
