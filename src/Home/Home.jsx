@@ -68,6 +68,18 @@ function Home() {
         <div className="home-container">
             <h1>bom dia, Vladia!</h1>
             <div className="lista-colunas">
+                <button onClick={() => navigate('/ColantRosa')} className="coluna-btn btn-com-tamanhos">
+                    <div className="btn-content">
+                        <h2>Colant Rosa</h2>
+                    </div>
+                    <div className="btn-tamanhos">
+                        <span>P-{getQuantidadeTamanho('Collant Rosa', 'P')}</span>
+                        <span>M-{getQuantidadeTamanho('Collant Rosa', 'M')}</span>
+                        <span>G-{getQuantidadeTamanho('Collant Rosa', 'G')}</span>
+                        <span>GG-{getQuantidadeTamanho('Collant Rosa', 'GG')}</span>
+                    </div>
+                </button>
+
                 <button onClick={() => navigate('/ColantBasicoInfantil')} className="coluna-btn btn-com-tamanhos">
                     <div className="btn-content">
                         <h2>Colant básico infantil</h2>
