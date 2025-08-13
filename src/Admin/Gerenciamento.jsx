@@ -15,7 +15,7 @@ function Gerenciamento() {
     const fetchEstoque = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:3001/estoque/resumo');
+            const response = await fetch('https://estoque-backend-hxfb.onrender.com/estoque/resumo');
             const data = await response.json();
             
             if (data.success) {
