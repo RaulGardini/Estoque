@@ -10,7 +10,7 @@ function GRedinha() {
 
     // Buscar estoque do backend ao montar componente
     useEffect(() => {
-        fetch('http://localhost:3001/estoque')
+        fetch('https://estoque-backend-hxfb.onrender.com/estoque')
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.data) {
@@ -28,7 +28,7 @@ function GRedinha() {
 const atualizarEstoqueBackend = async (novaQuantidade) => {
     setLoading(true);
     try {
-        const response = await fetch('http://localhost:3001/estoque/atualizar-simples', {
+        const response = await fetch('https://estoque-backend-hxfb.onrender.com/estoque/atualizar-simples', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

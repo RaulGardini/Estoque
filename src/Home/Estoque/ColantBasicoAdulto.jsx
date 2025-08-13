@@ -16,7 +16,7 @@ function ColantBasicoAdulto() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3001/estoque')
+        fetch('https://estoque-backend-hxfb.onrender.com/estoque')
             .then(res => res.json())
             .then(data => {
                 if (data.success && data.data) {
@@ -34,7 +34,7 @@ function ColantBasicoAdulto() {
     const atualizarEstoqueBackend = async (tamanho, novaQuantidade, tipoOperacao) => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:3001/estoque/atualizar', {
+            const response = await fetch('https://estoque-backend-hxfb.onrender.com/estoque/atualizar', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

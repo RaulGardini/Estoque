@@ -13,7 +13,7 @@ function Formulario() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/login/validar', {
+      const response = await fetch('https://estoque-backend-hxfb.onrender.com/login/validar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

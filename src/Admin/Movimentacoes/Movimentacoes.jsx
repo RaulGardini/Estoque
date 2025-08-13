@@ -19,12 +19,12 @@ function Movimentacoes() {
         try {
             setLoading(true);
             // Buscar movimentações
-            const responseMovimentacoes = await fetch('http://localhost:3001/movimentacoes');
+            const responseMovimentacoes = await fetch('https://estoque-backend-hxfb.onrender.com/movimentacoes');
             const dataMovimentacoes = await responseMovimentacoes.json();
             setMovimentacoes(dataMovimentacoes);
             
             // Buscar valores das vendas
-            const responseValores = await fetch('http://localhost:3001/movimentacoes/vendas-valor');
+            const responseValores = await fetch('https://estoque-backend-hxfb.onrender.com/movimentacoes/vendas-valor');
             const dataValores = await responseValores.json();
             if (dataValores.success) {
                 setVendasValor(dataValores.data);
@@ -67,7 +67,7 @@ function Movimentacoes() {
     const limparTodasMovimentacoes = async () => {
         if (window.confirm('Tem certeza que deseja excluir TODAS as movimentações? Esta ação não pode ser desfeita.')) {
             try {
-                const response = await fetch('http://localhost:3001/movimentacoes/limpar', {
+                const response = await fetch('https://estoque-backend-hxfb.onrender.com/movimentacoes/limpar', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function Movimentacoes() {
     const excluirMovimentacao = async (movimentacaoId) => {
         if (window.confirm('Tem certeza que deseja excluir esta movimentação?')) {
             try {
-                const response = await fetch(`http://localhost:3001/movimentacoes/${movimentacaoId}`, {
+                const response = await fetch(`https://estoque-backend-hxfb.onrender.com/movimentacoes/${movimentacaoId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
