@@ -41,7 +41,6 @@ function App() {
         <Route path="/Redinha" element={<Redinha />} />
         <Route path="/Adereco" element={<Adereco />} />
         <Route path="/SapatilhaRosa" element={<SapatilhaRosa />} />
-        <Route path="/SapatilhaPreta" element={<SapatilhaPreta />} />
         <Route path="/MeiaInfantil" element={<MeiaInfantil />} />
         <Route path="/MeiaAdulto" element={<MeiaAdulto />} />
         <Route path="/Gerenciamento" element={<Gerenciamento />} />
@@ -54,7 +53,6 @@ function App() {
         <Route path="/GMeiaAdulto" element={<GMeiaAdulto />} />
         <Route path="/GRedinha" element={<GRedinha />} />
         <Route path="/GMeiaInfantil" element={<GMeiaInfantil />} />
-        <Route path="/GSapatilhaPreta" element={<GSapatilhaPreta />} />
         <Route path="/GSapatilhaRosa" element={<GSapatilhaRosa />} />
         <Route path="/Movimentacoes" element={<Movimentacoes />} />
       </Routes>

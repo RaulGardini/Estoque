@@ -65,7 +65,7 @@ const deletar = () => {
 
     return (
         <div className="estoque-containerr">
-            <h2>Sapatilha Rosa</h2>
+            <h2>Sapatilha</h2>
             <div className="estoque-total">
                 <strong>Total em estoque:</strong> {quantidade}
             </div>
