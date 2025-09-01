@@ -143,11 +143,6 @@ function Home() {
                     <h4>{getTotalProduto('Sapatilha Rosa')} total</h4>
                 </button>
 
-                <button onClick={() => navigate('/SapatilhaPreta')} className="coluna-btn">
-                    <h2>Sapatilha preta</h2>
-                    <h4>{getTotalProduto('Sapatilha Preta')} total</h4>
-                </button>
-
                 <button onClick={() => navigate('/MeiaInfantil')} className="coluna-btn">
                     <h2>Meia infantil</h2>
                     <h4>{getTotalProduto('Meia Infantil')} total</h4>
