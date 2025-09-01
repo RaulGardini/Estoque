@@ -145,7 +145,7 @@ function Gerenciamento() {
                 </button>
 
                 <button onClick={() => navigate('/GSapatilhaRosa')} className="coluna-btn-gerenciamento">
-                    <h2>Sapatilha rosa</h2>
+                    <h2>Sapatilha</h2>
                     <h4>{getTotalProduto('Sapatilha Rosa')} total</h4>
                 </button>
 

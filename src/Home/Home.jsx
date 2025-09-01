@@ -139,7 +139,7 @@ function Home() {
                 </button>
 
                 <button onClick={() => navigate('/SapatilhaRosa')} className="coluna-btn">
-                    <h2>Sapatilha rosa</h2>
+                    <h2>Sapatilha</h2>
                     <h4>{getTotalProduto('Sapatilha Rosa')} total</h4>
                 </button>
 
