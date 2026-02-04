@@ -58,7 +58,7 @@
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
-  border-bottom: 15px solid blue;
+  border-bottom: 15px solid #2563EB;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -127,15 +127,11 @@
 .retry-btn {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #2563eb;
+  background-color: #2563EB;
   color: white;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-}
-
-.retry-btn:hover {
-  background-color: #1d4ed8;
 }
 
 /* Media queries para diferentes tamanhos */
