@@ -97,11 +97,6 @@
   margin-bottom: 2px;
 }
 
-.coluna-btn:hover {
-  background: #2563eb;
-  transform: scale(1.03);
-}
-
 /* Botões sem tamanhos - para itens como Redinha, Adereço, etc */
 .coluna-btn:not(.btn-com-tamanhos) {
   flex-direction: row;
