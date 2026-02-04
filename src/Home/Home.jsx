@@ -17,7 +17,7 @@ function Home() {
             setLoading(true);
             const response = await fetch('https://estoque-backend-hxfb.onrender.com/estoque/resumo');
             const data = await response.json();
-            
+
             if (data.success) {
                 setEstoque(data.byName || {});
             } else {
@@ -66,7 +66,18 @@ function Home() {
 
     return (
         <div className="home-container">
-            <h1>bom dia, Vladia!</h1>
+            <div className='div-header'>
+                <div>
+                    <h2>Estoque Academia Tereza Passos</h2>
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+                    <h1>bom dia, Vladia!</h1>
+                    <h3>tudo bem?</h3>
+                </div>
+                <div>
+                    <h3>Vamos ao Trabalho!</h3>
+                </div>
+            </div>
             <div className="lista-colunas">
                 <button onClick={() => navigate('/ColantRosa')} className="coluna-btn btn-com-tamanhos">
                     <div className="btn-content">
